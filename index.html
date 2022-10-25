@@ -5,11 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>to-do list</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"/>
-
+  <link
+    href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-  <h1 class="all-tasks">What do you want to do today?</h1>
+  <h1 class="all-tasks title">What do you want to do today?</h1>
 
   <div class="all-tasks">
     <h2 class="task-list-title">My Lists</h2>
@@ -42,11 +45,49 @@
             type="checkbox"
             id="task-1"
           />
-          <label for="task-1">create to-do list</label>
+          <label for="task-1">
+            <span class="custom-checkbox"></span>
+            create to-do list
+          </label>
+        </div>
+
+        <div class="task">
+          <input 
+            type="checkbox"
+            id="task-2"
+          />
+          <label for="task-2">
+            <span class="custom-checkbox"></span>
+            task 2
+          </label>
+        </div>
+
+        <div class="task">
+          <input 
+            type="checkbox"
+            id="task-3"
+          />
+          <label for="task-3">
+            <span class="custom-checkbox"></span>
+            task 3
+          </label>
         </div>
       </div>
-      <div class="new-task-creator"></div>
-      <div class="delete-stuff"></div>
+      <div class="new-task-creator">
+        <form action="">
+          <input 
+            type="text"
+            class="new list"
+            placeholder="new task name"
+            aria-label="new task name"
+          />
+          <button class="btn task" aria-label="create new task">+</button>
+        </form>
+      </div>
+      <div class="delete-stuff">
+        <button class="btn delte">Clear Completed Tasks</button>
+        <button class="btn delete">Delete List</button>
+      </div>
     </div>
   </div>
 
