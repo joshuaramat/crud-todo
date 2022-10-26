@@ -1,95 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>to-do list</title>
-  <link
-    href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="css/main.css" />
-</head>
-<body>
-  <h1 class="all-tasks title">What do you want to do today?</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GratiList</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-  <div class="all-tasks">
-    <h2 class="task-list-title">My Lists</h2>
-    <ul class="task-list">
-      <li class="active-list">To-Do</li>
-      <li>Work</li>
-      <li>Groceries</li>
-    </ul>
+  <body>
+    <h1 class="title">What are you grateful for?</h1>
 
-    <form action="">
-      <input 
-        type="text"
-        class="new list"
-        placeholder="new list name"
-        aria-label="new list name"
-      />
-      <button class="btn list" aria-label="create new list">+</button>
-    </form>
-  </div>
-  <div class="todo-list">
-    <div class="todo-header">
-      <h2 class="list-title">To-Do</h2>
-      <p class="task-count">3 tasks remaining</p>
-
-    </div>
-    <div class="todo-body">
-      <div class="tasks">
-        <div class="task">
-          <input 
-            type="checkbox"
-            id="task-1"
-          />
-          <label for="task-1">
-            <span class="custom-checkbox"></span>
-            create to-do list
-          </label>
-        </div>
-
-        <div class="task">
-          <input 
-            type="checkbox"
-            id="task-2"
-          />
-          <label for="task-2">
-            <span class="custom-checkbox"></span>
-            task 2
-          </label>
-        </div>
-
-        <div class="task">
-          <input 
-            type="checkbox"
-            id="task-3"
-          />
-          <label for="task-3">
-            <span class="custom-checkbox"></span>
-            task 3
-          </label>
-        </div>
+    <div class="gratitude-list">
+      <div class="gratitude-header">
+        <h2 class="list-title">I'm grateful for...</h2>
       </div>
-      <div class="new-task-creator">
-        <form action="">
-          <input 
-            type="text"
-            class="new list"
-            placeholder="new task name"
-            aria-label="new task name"
-          />
-          <button class="btn task" aria-label="create new task">+</button>
-        </form>
-      </div>
-      <div class="delete-stuff">
-        <button class="btn delte">Clear Completed Tasks</button>
-        <button class="btn delete">Delete List</button>
+
+      <div class="gratitude-body">
+        <div class="items">
+          <div class="item">
+            <input 
+              type="checkbox"
+              id="item-1"
+            />
+            <label for="item-1">
+              <span class="custom-checkbox"></span>
+              my friends and family
+            </label>
+          </div>
+          <!-- /item-1 -->
+
+          <div class="item">
+              <input 
+                type="checkbox"
+                id="item-2"
+              />
+              <label for="item-2">
+                <span class="custom-checkbox"></span>
+                my loving girlfriend
+              </label>
+            </div>
+            <!-- /item-2 -->
+
+            <div class="item">
+                <input 
+                  type="checkbox"
+                  id="item-3"
+                />
+                <label for="item-3">
+                  <span class="custom-checkbox"></span>
+                  that I am able to live a healthy life
+                </label>
+              </div>
+              <!-- /item-3 -->
+        </div>
+
+        <div class="new-item-creator">
+            <form action="">
+                <input 
+                  type="text"
+                  class="new item"
+                  placeholder="new item name"
+                  aria-label="new item name"
+                />
+                <button class="btn create" aria-label="create new item">+</button>
+              </form>
+        </div>
+
+        <div class="delete-stuff">
+          <button class="btn delete">Clear completed items</button>
+          <button class="btn delete">Delete list</button>
+        </div>
       </div>
     </div>
-  </div>
 
-</body>
+   
+    </div>
+  </body>
 </html>
