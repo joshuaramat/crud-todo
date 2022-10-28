@@ -65,7 +65,7 @@ form {
   background: 0;
   border: 0;
   padding: 0;
-  color: inherit;
+  color: var(--clr-secondary);
 }
 
 .btn.create {
