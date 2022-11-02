@@ -4,75 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Gratio</title>
+    <title>Todo list</title>
     <link
       href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/main.css" />
+    <script defer src="script.js"></script>
   </head>
 
   <body>
-    <h1 class="title">What are you grateful for?</h1>
+    <h1 class="title">Stuff I need to do</h1>
 
-    <div class="gratitude-list">
-      <div class="gratitude-header">
-        <h3 class="list-title">I'm grateful for...</h3>
+    <div class="all-tasks">
+      <h2 class="task-list-title">My lists</h2>
+      <ul class="task-list" data-lists>
+        <!-- <li class="list-name active-list">Youtube</li>
+        <li class="list-name">Work</li>
+        <li class="list-name">Grocery</li> -->
+      </ul>
+
+      <form action="" data-new-list-form>
+        <input 
+          type="text"
+          class="new list"
+          data-new-list-input
+          placeholder="new list name"
+          aria-label="new list name"
+        />
+        <button class="btn create" aria-label="create new list">+</button>
+      </form>
+    </div>
+
+    <div class="todo-list">
+      <div class="todo-header">
+        <h2 class="list-title">YouTube</h2>
+        <p class="task-count">3 tasks remaining</p>
       </div>
 
-      <div class="gratitude-body">
-        <div class="items">
-          <div class="item">
+      <div class="todo-body">
+        <div class="tasks">
+          <div class="task">
             <input 
               type="checkbox"
-              id="item-1"
+              id="task-1"
             />
-            <label for="item-1">
+            <label for="task-1">
               <span class="custom-checkbox"></span>
-              my friends and family
+              record todo list video
             </label>
           </div>
-          <!-- /item-1 -->
+          <!-- /task-1 -->
 
-          <div class="item">
+          <div class="task">
               <input 
                 type="checkbox"
-                id="item-2"
+                id="task-2"
               />
-              <label for="item-2">
+              <label for="task-2">
                 <span class="custom-checkbox"></span>
-                my loving girlfriend
+                another task
               </label>
             </div>
-            <!-- /item-2 -->
+            <!-- /task-2 -->
 
-            <div class="item">
+            <div class="task">
                 <input 
                   type="checkbox"
-                  id="item-3"
+                  id="task-3"
                 />
-                <label for="item-3">
+                <label for="task-3">
                   <span class="custom-checkbox"></span>
-                  that I am able to live a healthy life
+                  a third task
                 </label>
               </div>
-              <!-- /item-3 -->
+              <!-- /task-3 -->
         </div>
 
-        <div class="new-item-creator">
+        <div class="new-task-creator">
             <form action="">
                 <input 
                   type="text"
-                  class="new item"
-                  placeholder="New Item"
-                  aria-label="New Item"
+                  class="new task"
+                  placeholder="new task name"
+                  aria-label="new task name"
                 />
-                <button class="btn create" aria-label="create new item">+</button>
+                <button class="btn create" aria-label="create new task">+</button>
               </form>
         </div>
 
         <div class="delete-stuff">
-          <button class="btn delete">Clear Items</button>
+          <button class="btn delete">Clear completed tasks</button>
+          <button class="btn delete">Delete list</button>
         </div>
       </div>
     </div>
