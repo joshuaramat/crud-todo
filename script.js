@@ -1,21 +1,27 @@
+/* Selecting the elements from the HTML file. */
 const listsContainer = document.querySelector('[data-lists]')
 const newListForm = document.querySelector('[data-new-list-form]')
 const newListInput = document.querySelector('[data-new-list-input]')
 const deleteListButton = document.querySelector('[data-delete-list-button]')
 
+/* Selecting the list elements from the HTML file. */
 const listDisplayContainer = document.querySelector('[data-list-display-container]')
 const listTitleElement = document.querySelector('[data-list-title]')
 const listCountElement = document.querySelector('[data-list-count]')
-const tasksContainer = document.querySelector('[data-tasks]')
-const taskTemplate = document.getElementById('[task-template]')
-const newTaskForm = document.querySelector('[data-new-task-form]')
-const newTaskInput = document.querySelector('[data-new-task-input]')
 
-const LOCAL_STORAGE_LIST_KEY = 'task.lists'
-const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
+/* Selecting the Gratitude elements from the HTML file. */
+const GratitudesContainer = document.querySelector('[data-Gratitudes]')
+const GratitudeTemplate = document.getElementById('Gratitude-template')
+const newGratitudeForm = document.querySelector('[data-new-Gratitude-form]')
+const newGratitudeInput = document.querySelector('[data-new-Gratitude-input]')
+
+/* This is setting up the local storage for the to-do list. */
+const LOCAL_STORAGE_LIST_KEY = 'Gratitude.lists'
+const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'Gratitude.selectedListId'
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []
-let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY) 
+let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)
 
+/* Add an event listener to the listsContainer. When the user clicks on the list, the selectedListId is set to the list that was clicked on. */
 listsContainer.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === 'li') {
     selectedListId = e.target.dataset.listId
@@ -23,50 +29,56 @@ listsContainer.addEventListener('click', e => {
   }
 })
 
-tasksContainer.addEventListener('click', e => {
+/* Add an event listener to the GratitudesContainer. When the user clicks on the Gratitude, the selectedGratitude is set to the Gratitude that was clicked on. */
+GratitudesContainer.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === 'input') {
     const selectedList = lists.find(list => list.id === selectedListId)
-    const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
-    selectedTask.complete = e.target.checked
+    const selectedGratitude = selectedList.Gratitudes.find(Gratitude => Gratitude.id === e.target.id)
+    selectedGratitude.complete = e.target.checked
     save()
-    renderTaskCount(selectedList)
+    renderGratitudeCount(selectedList)
   }
 })
 
+/* This is filtering out the list that is not selected. */
 deleteListButton.addEventListener('click', e => {
   lists = lists.filter(list => list.id !== selectedListId)
   selectedListId = null
   saveAndRender()
 })
 
+/* Add an event listener for when the user submits the form. Then, the listName is set to the value of the newListInput. If the listName is null or an empty string, the function returns. Then, the list is set to the createList function. The newListInput is set to null. Then, the lists array is pushed to the list. Then, the saveAndRender() function is called. */
 newListForm.addEventListener('submit', e => {
   e.preventDefault()
   const listName = newListInput.value
-
-  if (listName == null || listName == '') return
+  if (listName == null || listName === '') return
   const list = createList(listName)
   newListInput.value = null
   lists.push(list)
   saveAndRender()
 })
 
-newTaskForm.addEventListener('submit', e => {
+/* This is adding an event listener for when the user submits the form. Then, the GratitudeName is set to
+the value of the newGratitudeInput. If the GratitudeName is null or an empty string, the function returns.
+Then, the Gratitude is set to the createGratitude function. The newGratitudeInput is set to null. Then, the
+selectedList is set to the lists array. Then, the selectedList.Gratitudes array is pushed to the Gratitude.
+Then, the saveAndRender() function is called. */
+newGratitudeForm.addEventListener('submit', e => {
   e.preventDefault()
-  const taskName = newTaskInput.value
-
-  if (taskName == null || taskName == '') return
-  const task = createTask(taskName)
-  newTaskInput.value = null
+  const GratitudeName = newGratitudeInput.value
+  if (GratitudeName == null || GratitudeName === '') return
+  const Gratitude = createGratitude(GratitudeName)
+  newGratitudeInput.value = null
   const selectedList = lists.find(list => list.id === selectedListId)
-  selectedList.tasks.push(task)
+  selectedList.Gratitudes.push(Gratitude)
   saveAndRender()
 })
 
 function createList(name) {
-  return { id: Date.now().toString(), name: name, tasks: [] }
+  return { id: Date.now().toString(), name: name, Gratitudes: [] }
 }
 
-function createTask(name) {
+function createGratitude(name) {
   return { id: Date.now().toString(), name: name, complete: false }
 }
 
@@ -84,38 +96,38 @@ function render() {
   clearElement(listsContainer)
   renderLists()
 
-  const selectedList = list.find(list => list.id === selectedListId)
+  const selectedList = lists.find(list => list.id === selectedListId)
   if (selectedListId == null) {
     listDisplayContainer.style.display = 'none'
   } else {
     listDisplayContainer.style.display = ''
     listTitleElement.innerText = selectedList.name
-    renderTaskCount(selectedList)
-    clearElement(tasksContainer)
-    renderTasks(selectedList)
+    renderGratitudeCount(selectedList)
+    clearElement(GratitudesContainer)
+    renderGratitudes(selectedList)
   }
 }
 
-function renderTaskCount(selectedList) {
-  selectedList.tasks.forEach(task => {
-    const taskElement = document.importNode(taskTemplate.content, true)
-    const checkbox = taskElement.querySelector('input')
-    checkbox.id = task.id
-    checkbox.checked = task.complete
-    const label = taskElement.querySelector('label')
-    label.htmlFor = task.id
-    label.append(task.name)
-    tasksContainer.appendChild(taskElement)
+function renderGratitudes(selectedList) {
+  selectedList.Gratitudes.forEach(Gratitude => {
+    const GratitudeElement = document.importNode(GratitudeTemplate.content, true)
+    const checkbox = GratitudeElement.querySelector('input')
+    checkbox.id = Gratitude.id
+    checkbox.checked = Gratitude.complete
+    const label = GratitudeElement.querySelector('label')
+    label.htmlFor = Gratitude.id
+    label.append(Gratitude.name)
+    GratitudesContainer.appendChild(GratitudeElement)
   })
 }
 
-function renderTaskCount(selectedList) {
-  const incompleteTaskCount = selectedList.tasks.filter(task => !task.complete).length
-  const taskString = incompleteTaskCount === 1 ? "task" : "tasks"
-  listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`
+function renderGratitudeCount(selectedList) {
+  const incompleteGratitudeCount = selectedList.Gratitudes.filter(Gratitude => !Gratitude.complete).length
+  const GratitudeString = incompleteGratitudeCount === 1 ? "gratitude" : "gratitudes"
+  listCountElement.innerText = `${incompleteGratitudeCount} ${GratitudeString} in this list`
 }
 
-function renderLists () {
+function renderLists() {
   lists.forEach(list => {
     const listElement = document.createElement('li')
     listElement.dataset.listId = list.id
@@ -129,7 +141,7 @@ function renderLists () {
 }
 
 function clearElement(element) {
-  while(element.firstChild) {
+  while (element.firstChild) {
     element.removeChild(element.firstChild)
   }
 }

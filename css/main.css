@@ -1,8 +1,9 @@
 :root {
-  --clr-primary: rgb(54, 112, 199);
-  --clr-light: #f4f4f4;
-  --clr-dark: #333;
-  --clr-warning: rgb(99, 36, 36);
+  --clr-primary: #004643;
+  --clr-secondary: #abd1c6;
+  --clr-light: #fffffe;
+  --clr-dark: #001e1d;
+  --clr-warning: #e16162;
 }
 
 *,
@@ -14,7 +15,7 @@
 
 body {
   margin: 0;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: 1.5rem;
   background-color: var(--clr-primary);
@@ -26,18 +27,17 @@ body {
 .title {
   grid-area: header;
   text-align: center;
-  font-size: calc(7vw + 2rem);
+  font-size: calc(5vw + 3rem);
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.1);
-  letter-spacing: 2px;
-  margin: -0.3em 0 0.5em;
+  color: var(--clr-light);
+  margin: 0.3em 0 0.5em;
 }
 
-.all-tasks {
+.all-gratitudes {
   grid-area: lists;
 }
 
-.task-list {
+.gratitude-list {
   font-size: 1.2rem;
   line-height: 1.7;
   list-style: circle;
@@ -88,7 +88,7 @@ form {
 .new {
   background: transparent;
   border: 0;
-  color: inherit;
+  color: var(--clr-secondary);
   border-bottom: 1px solid currentColor;
   font-size: inherit;
   outline: none;
@@ -135,9 +135,10 @@ form {
 
 .new.list {
   font-size: 1.1rem;
+  color: var(--clr-secondary);
 }
 
-.new.task {
+.new.gratitude {
   margin-bottom: 0;
 }
 
@@ -150,21 +151,23 @@ form {
   grid-area: active;
   background: var(--clr-light);
   color: var(--clr-dark);
+  border-radius: 30px;
 }
 
 .todo-header {
   padding: var(--spacer);
-  background: #e4e4e4;
+  background: var(--clr-secondary);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: 30px 30px 0px 0px;
 }
 
 .list-title {
   margin: 0 1em 0 0;
 }
 
-.task-count {
+.gratitude-count {
   margin: 0;
   font-size: 1rem;
 }
@@ -174,7 +177,7 @@ form {
   position: relative;
 }
 
-.new-task-creator .create {
+.new-gratitude-creator .create {
   color: var(--clr-primary);
 }
 
@@ -183,18 +186,18 @@ form {
   position: absolute;
 }
 
-.task label {
+.gratitude label {
   display: flex-inline;
   align-items: center;
   position: relative;
 }
 
-.task {
+.gratitude {
   position: relative;
   margin-bottom: 1.25em;
 }
 
-.task::after {
+.gratitude::after {
   content: "";
   position: absolute;
   right: 0;
@@ -221,7 +224,7 @@ form {
   transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 }
 
-.task:hover .custom-checkbox,
+.gratitude:hover .custom-checkbox,
 [type="checkbox"]:focus + label .custom-checkbox {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
@@ -238,7 +241,7 @@ form {
   opacity: 0.5;
 }
 
-.task label::after {
+.gratitude label::after {
   content: "";
   position: absolute;
   left: 0;
@@ -266,9 +269,9 @@ form {
 .delete-stuff {
   display: flex;
   justify-content: space-evenly;
-  position: relative;
+  position: absolute;
   width: 100%;
   left: 0;
   bottom: -35px;
-  color: var(--clr-dark);
+  color: var(--clr-secondary);
 }
