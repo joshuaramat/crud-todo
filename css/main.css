@@ -41,7 +41,7 @@ body {
   font-size: 1.2rem;
   line-height: 1.7;
   list-style: circle;
-  padding-left: 1.1em;
+  background: none;
 }
 
 .list-name {
@@ -146,15 +146,14 @@ form {
   font-weight: 700;
 }
 
-.todo-list {
+.gratitude-list {
   --spacer: 2rem;
   grid-area: active;
-  background: var(--clr-light);
-  color: var(--clr-dark);
+  color: var(--clr-light);
   border-radius: 30px;
 }
 
-.todo-header {
+.gratitude-header {
   padding: var(--spacer);
   background: var(--clr-secondary);
   display: flex;
@@ -172,9 +171,11 @@ form {
   font-size: 1rem;
 }
 
-.todo-body {
+.gratitude-body {
   padding: var(--spacer);
   position: relative;
+  background: var(--clr-light);
+  border-radius: 0 0 30px 30px;
 }
 
 .new-gratitude-creator .create {
@@ -190,6 +191,7 @@ form {
   display: flex-inline;
   align-items: center;
   position: relative;
+  color: var(--clr-primary);
 }
 
 .gratitude {
